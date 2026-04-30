@@ -68,7 +68,7 @@ function Home() {
           <div className="hero-card">
             <div className="profile-card">
               <div className="profile-avatar">
-                {personalInfo.name.charAt(0)}
+                <img src="/mironpic.jpeg" alt="Profile of Mayron Malaquias" />
               </div>
 
               <h3>{personalInfo.name}</h3>
