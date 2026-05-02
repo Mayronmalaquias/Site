@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/css/styles.css';
 
@@ -12,182 +12,234 @@ function Home() {
     github: 'https://github.com/Mayronmalaquias',
   };
 
+  const countersRef = useRef([]);
+
+  useEffect(() => {
+    const targets = [10, 5, 100];
+    const suffixes = ['+', '+', '%'];
+    countersRef.current.forEach((el, i) => {
+      if (!el) return;
+      let start = 0;
+      const end = targets[i];
+      const duration = 1400;
+      const step = Math.ceil(end / (duration / 16));
+      const timer = setInterval(() => {
+        start = Math.min(start + step, end);
+        el.textContent = start + suffixes[i];
+        if (start >= end) clearInterval(timer);
+      }, 16);
+    });
+  }, []);
+
+  const skills = [
+    {
+      icon: '◈',
+      title: 'Data Analysis',
+      desc: 'Cleaning, modeling and interpreting datasets to surface patterns and drive strategic decisions.',
+    },
+    {
+      icon: '▣',
+      title: 'Business Intelligence',
+      desc: 'Dashboards, KPIs and visual reports that translate raw data into executive clarity.',
+    },
+    {
+      icon: '◉',
+      title: 'Web Development',
+      desc: 'Responsive, performance-first interfaces connecting data systems to end users.',
+    },
+    {
+      icon: '◆',
+      title: 'Automation & ETL',
+      desc: 'Pipelines and scripts that eliminate manual work and keep data flowing reliably.',
+    },
+  ];
+
+  const techStack = [
+    'Python', 'SQL', 'PostgreSQL', 'Power BI',
+    'React', 'JavaScript', 'Pandas', 'Flask',
+    'ETL', 'Excel', 'Git', 'Web Scraping',
+  ];
+
   return (
     <main className="home-page">
+
+      {/* ── NAV ── */}
+      <nav className="home-navbar">
+        <div className="logo">
+          <span className="logo-dot" />
+          miron<span className="logo-accent">dev</span>
+        </div>
+        <div className="nav-links">
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/projects">Projects</Link>
+          <Link to="/contact">Contact</Link>
+        </div>
+      </nav>
+
+      {/* ── HERO ── */}
       <section className="hero-section">
-        <nav className="home-navbar">
-          <div className="logo">Portfolio</div>
-
-          <div className="nav-links">
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/projects">Projects</Link>
-            <Link to="/contact">Contact</Link>
-          </div>
-        </nav>
-
         <div className="hero-content">
+
           <div className="hero-text">
-            <span className="hero-badge">Available for opportunities</span>
+            <div className="hero-badge">
+              <span className="badge-dot" />
+              Available for opportunities
+            </div>
 
             <h1>
-              Hi, I’m <span>{personalInfo.name}</span>
+              Turning raw data<br />
+              into <span className="hero-accent">clear answers.</span>
             </h1>
 
-            <h2>{personalInfo.role}</h2>
-
-            <p>
-              I build modern web applications and transform data into clear,
-              strategic and actionable insights. My work combines technology,
-              business intelligence and user-focused solutions.
+            <p className="hero-sub">
+              Data Analyst & Web Developer based in Brasília. I work at the intersection
+              of engineering, analytics and business — building systems that make data
+              visible, useful and actionable.
             </p>
 
-            <div className="hero-buttons">
-              <Link to="/projects" className="btn-primary">
-                View Projects
-              </Link>
+            <div className="hero-meta-row">
+              <span className="hero-meta-item">
+                <span className="hero-meta-label">Focus</span>
+                Data · BI · Web
+              </span>
+              <span className="hero-meta-divider" />
+              <span className="hero-meta-item">
+                <span className="hero-meta-label">Based</span>
+                Brasília, BR
+              </span>
+              <span className="hero-meta-divider" />
+              <span className="hero-meta-item">
+                <span className="hero-meta-label">Degree</span>
+                Computer Engineering
+              </span>
+            </div>
 
-              <Link to="/contact" className="btn-secondary">
-                Contact Me
-              </Link>
+            <div className="hero-buttons">
+              <Link to="/projects" className="btn-primary">View Projects →</Link>
+              <Link to="/contact" className="btn-secondary">Contact Me</Link>
             </div>
 
             <div className="hero-socials">
-              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer">
-                LinkedIn
-              </a>
-              <a href={personalInfo.github} target="_blank" rel="noreferrer">
-                GitHub
-              </a>
-              <a href={`mailto:${personalInfo.email}`}>
-                Email
-              </a>
+              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
+              <a href={personalInfo.github} target="_blank" rel="noreferrer">GitHub ↗</a>
+              <a href={`mailto:${personalInfo.email}`}>Email ↗</a>
             </div>
           </div>
 
+          {/* ── PROFILE CARD ── */}
           <div className="hero-card">
             <div className="profile-card">
-              <div className="profile-avatar">
-                <img src="/mironpic.jpeg" alt="Profile of Mayron Malaquias" />
+              <div className="profile-card-top">
+                <div className="profile-avatar">
+                  <img src="/mironpic.jpeg" alt="Mayron Malaquias" />
+                </div>
+                <div className="profile-status">
+                  <span className="status-dot" />
+                  Open to work
+                </div>
               </div>
 
               <h3>{personalInfo.name}</h3>
-              <p>{personalInfo.role}</p>
+              <p className="profile-role">{personalInfo.role}</p>
 
-              <div className="profile-info">
-                <span>Location</span>
-                <strong>{personalInfo.location}</strong>
-              </div>
+              <div className="profile-divider" />
 
-              <div className="profile-info">
-                <span>Focus</span>
-                <strong>Data, BI and Web Solutions</strong>
-              </div>
-
-              <div className="profile-info">
-                <span>Status</span>
-                <strong>Open to new projects</strong>
+              <div className="profile-info-grid">
+                <div className="profile-info-item">
+                  <span>Location</span>
+                  <strong>{personalInfo.location}</strong>
+                </div>
+                <div className="profile-info-item">
+                  <span>Focus</span>
+                  <strong>Data & BI</strong>
+                </div>
+                <div className="profile-info-item">
+                  <span>Semester</span>
+                  <strong>7th — IESB</strong>
+                </div>
+                <div className="profile-info-item">
+                  <span>Status</span>
+                  <strong>Open to projects</strong>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* ── STATS ── */}
       <section className="stats-section">
-        <div className="stat-card">
-          <h3>10+</h3>
-          <p>Projects Developed</p>
-        </div>
-
-        <div className="stat-card">
-          <h3>5+</h3>
-          <p>Technologies Used</p>
-        </div>
-
-        <div className="stat-card">
-          <h3>100%</h3>
-          <p>Focus on Results</p>
-        </div>
+        {[
+          { val: 10, suf: '+', label: 'Projects Delivered', sub: 'data & web' },
+          { val: 5, suf: '+', label: 'Technologies', sub: 'in daily use' },
+          { val: 100, suf: '%', label: 'Results Focus', sub: 'always' },
+        ].map((s, i) => (
+          <div className="stat-card" key={i}>
+            <div className="stat-number" ref={el => countersRef.current[i] = el}>
+              {s.val}{s.suf}
+            </div>
+            <div className="stat-label">{s.label}</div>
+            <div className="stat-sub">{s.sub}</div>
+          </div>
+        ))}
       </section>
 
+      {/* ── SKILLS ── */}
       <section className="skills-section">
         <div className="section-header">
-          <span>What I Do</span>
-          <h2>Building solutions with data and technology</h2>
-          <p>
-            I work with development, analysis and visualization to create
-            practical solutions for real business problems.
-          </p>
+          <span className="section-tag">What I Do</span>
+          <h2>Data meets engineering,<br />engineering meets impact.</h2>
+          <p>I work across the full analytics stack — from raw SQL to interactive dashboards, from ETL pipelines to user-facing web apps.</p>
         </div>
 
         <div className="skills-grid">
-          <div className="skill-card">
-            <h3>Data Analysis</h3>
-            <p>
-              Cleaning, organizing and analyzing data to discover patterns,
-              trends and business opportunities.
-            </p>
-          </div>
-
-          <div className="skill-card">
-            <h3>Business Intelligence</h3>
-            <p>
-              Creating dashboards and reports that help teams monitor
-              performance and make better decisions.
-            </p>
-          </div>
-
-          <div className="skill-card">
-            <h3>Web Development</h3>
-            <p>
-              Developing responsive, clean and functional interfaces using
-              modern front-end technologies.
-            </p>
-          </div>
-
-          <div className="skill-card">
-            <h3>Automation</h3>
-            <p>
-              Building scripts and tools to reduce manual work, improve
-              productivity and organize processes.
-            </p>
-          </div>
+          {skills.map((s, i) => (
+            <div className="skill-card" key={i}>
+              <div className="skill-icon">{s.icon}</div>
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
+      {/* ── TECH ── */}
       <section className="tech-section">
         <div className="section-header">
-          <span>Technologies</span>
-          <h2>Tools I use to build solutions</h2>
+          <span className="section-tag">Stack</span>
+          <h2>Tools I trust to get the job done.</h2>
         </div>
-
         <div className="tech-list">
-          <span>React</span>
-          <span>JavaScript</span>
-          <span>Python</span>
-          <span>Pandas</span>
-          <span>SQL</span>
-          <span>Power BI</span>
-          <span>Excel</span>
-          <span>Flask</span>
-          <span>Git</span>
+          {techStack.map((t, i) => (
+            <span key={i}>{t}</span>
+          ))}
         </div>
       </section>
 
+      {/* ── FEATURED CTA ── */}
       <section className="featured-section">
         <div className="featured-content">
-          <span>Featured Work</span>
-          <h2>Projects that connect technology, data and usability</h2>
-          <p>
-            Explore some of my projects involving dashboards, data analysis,
-            web systems, automation tools and practical business solutions.
-          </p>
-
-          <Link to="/projects" className="btn-primary">
-            See All Projects
-          </Link>
+          <div className="featured-inner">
+            <span className="section-tag">Featured Work</span>
+            <h2>Real projects. Real data. Real results.</h2>
+            <p>
+              From a production real estate intelligence platform to hackathon tools
+              and cybersecurity dashboards — explore the work that reflects how I think
+              and build.
+            </p>
+            <Link to="/projects" className="btn-primary">Explore Projects →</Link>
+          </div>
+          <div className="featured-decoration">
+            <div className="deco-grid">
+              {Array.from({ length: 16 }).map((_, i) => (
+                <div className="deco-cell" key={i} />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
+
     </main>
   );
 }
