@@ -132,7 +132,7 @@ function Home() {
             <div className="profile-card">
               <div className="profile-card-top">
                 <div className="profile-avatar">
-                  <img src="/mironpic.jpeg" alt="Mayron Malaquias" />
+                  <img src="/maypic.jpeg" alt="Mayron Malaquias" />
                 </div>
                 <div className="profile-status">
                   <span className="status-dot" />
