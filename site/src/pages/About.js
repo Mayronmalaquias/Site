@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../assets/css/styles.css';
 
 function About() {
@@ -43,21 +44,22 @@ function About() {
 
   return (
     <main className="about-page">
+      <a href="#main-content" className="skip-link">Pular para o conteúdo</a>
       <nav className="home-navbar">
         <div className="logo">
           <span className="logo-dot" />
           miron<span className="logo-accent">dev</span>
         </div>
         <div className="nav-links">
-          <a href="/">Home</a>
-          <a href="/about" className="active">About</a>
-          <a href="/projects">Projects</a>
-          <a href="/contact">Contact</a>
+          <Link to="/">Home</Link>
+          <Link to="/about" className="active">About</Link>
+          <Link to="/projects">Projects</Link>
+          <Link to="/contact">Contact</Link>
         </div>
       </nav>
 
       {/* ── HERO ── */}
-      <section className="about-hero">
+      <section id="main-content" className="about-hero">
         <div className="about-container">
           <span className="about-badge">About Me</span>
           <h1>Data analyst.<br />Engineer at heart.<br />Builder by nature.</h1>

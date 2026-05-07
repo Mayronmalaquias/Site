@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../assets/css/styles.css';
 
 function Projects() {
@@ -81,21 +82,22 @@ function Projects() {
 
   return (
     <main className="projects-page">
+      <a href="#main-content" className="skip-link">Pular para o conteúdo</a>
       <nav className="home-navbar">
         <div className="logo">
           <span className="logo-dot" />
           miron<span className="logo-accent">dev</span>
         </div>
         <div className="nav-links">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/projects" className="active">Projects</a>
-          <a href="/contact">Contact</a>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/projects" className="active">Projects</Link>
+          <Link to="/contact">Contact</Link>
         </div>
       </nav>
 
       {/* ── HERO ── */}
-      <section className="projects-hero">
+      <section id="main-content" className="projects-hero">
         <div className="projects-container">
           <span className="projects-badge">Portfolio</span>
           <h1>Projects built at the edge of data and engineering.</h1>

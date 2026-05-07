@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FaLinkedinIn, FaGithub, FaEnvelope, FaGlobe } from 'react-icons/fa';
 import '../assets/css/styles.css';
 
@@ -43,27 +44,33 @@ function Contact() {
     e.preventDefault();
     const subject = `Portfolio Contact — ${name}`;
     const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
-    window.location.href = `mailto:mayron.malaquias.eng@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    window.open(`mailto:mayron.malaquias.eng@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`);
     setSent(true);
+    setName('');
+    setEmail('');
+    setMessage('');
   };
+
+  const handleReset = () => setSent(false);
 
   return (
     <main className="contact-page">
+      <a href="#main-content" className="skip-link">Pular para o conteúdo</a>
       <nav className="home-navbar">
         <div className="logo">
           <span className="logo-dot" />
           miron<span className="logo-accent">dev</span>
         </div>
         <div className="nav-links">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/projects">Projects</a>
-          <a href="/contact" className="active">Contact</a>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/projects">Projects</Link>
+          <Link to="/contact" className="active">Contact</Link>
         </div>
       </nav>
 
       {/* ── HERO ── */}
-      <section className="contact-hero">
+      <section id="main-content" className="contact-hero">
         <div className="contact-container">
           <span className="contact-badge">Contact</span>
           <h1>Let's work on something meaningful together.</h1>
@@ -121,6 +128,9 @@ function Contact() {
                 <div className="success-icon">✓</div>
                 <h3>Message sent!</h3>
                 <p>Your email client opened with the message pre-filled. Thank you for reaching out.</p>
+                <button type="button" className="btn-secondary" style={{ marginTop: '16px' }} onClick={handleReset}>
+                  Send another message
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>

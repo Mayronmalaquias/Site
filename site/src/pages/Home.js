@@ -62,6 +62,7 @@ function Home() {
 
   return (
     <main className="home-page">
+      <a href="#main-content" className="skip-link">Pular para o conteúdo</a>
 
       {/* ── NAV ── */}
       <nav className="home-navbar">
@@ -78,7 +79,7 @@ function Home() {
       </nav>
 
       {/* ── HERO ── */}
-      <section className="hero-section">
+      <section id="main-content" className="hero-section">
         <div className="hero-content">
 
           <div className="hero-text">
