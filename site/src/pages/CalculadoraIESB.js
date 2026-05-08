@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../assets/css/styles.css';
 
 const MEDIA_MINIMA = 5;
@@ -319,8 +320,22 @@ const CalculadoraNotas = () => {
   }
 
   return (
-    <main className="calculadora-page simples">
-      <section className="calculadora-hero simples">
+    <main className="calculadora-page">
+      <a href="#main-content" className="skip-link">Pular para o conteúdo</a>
+      <nav className="home-navbar">
+        <div className="logo">
+          <span className="logo-dot" />
+          miron<span className="logo-accent">dev</span>
+        </div>
+        <div className="nav-links">
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/projects">Projects</Link>
+          <Link to="/contact">Contact</Link>
+        </div>
+      </nav>
+
+      <section id="main-content" className="calculadora-hero">
         <div>
           <span className="tag">IESB</span>
           <h1>Calculadora de Notas</h1>

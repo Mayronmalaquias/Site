@@ -1346,6 +1346,369 @@ body::before {
   .contact-form-card { padding: 26px; }
 }
 
+/* ─── CALCULADORA PAGE ───────────────────────────────────── */
+.calculadora-page {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg);
+  padding-bottom: 80px;
+}
+
+.calculadora-hero {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px 32px 36px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.calculadora-hero h1 {
+  font-family: var(--font-d);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-1);
+  margin-bottom: 12px;
+}
+
+.calculadora-hero .tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+
+.calculadora-hero p {
+  color: var(--text-2);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  max-width: 500px;
+}
+
+.calculadora-hero p strong {
+  color: var(--text-1);
+  font-weight: 600;
+}
+
+.botao-limpar {
+  flex-shrink: 0;
+  height: 40px;
+  padding: 0 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--text-2);
+  font-family: var(--font-b);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+  white-space: nowrap;
+  align-self: center;
+}
+.botao-limpar:hover {
+  border-color: var(--border-hover);
+  color: var(--text-1);
+}
+
+/* ── CARDS ── */
+.calculadora-page .card {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto 20px;
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+}
+
+.cabecalho-card { margin-bottom: 28px; }
+.cabecalho-card > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.numero-bloco {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  background: var(--accent-dim);
+  border: 1px solid rgba(200,255,0,0.2);
+  border-radius: var(--r-sm);
+  font-family: var(--font-d);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.cabecalho-card h2 {
+  font-family: var(--font-d);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+}
+
+.cabecalho-card > p {
+  color: var(--text-2);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  padding-left: 44px;
+}
+
+/* ── GRID DE CAMPOS ── */
+.grid-campos { display: grid; gap: 16px; margin-bottom: 24px; }
+.grid-campos.dois { grid-template-columns: 1fr 1fr; }
+.grid-campos.tres { grid-template-columns: repeat(3, 1fr); }
+
+/* ── CAMPO NOTA ── */
+.campo-nota { display: flex; flex-direction: column; gap: 8px; }
+
+.campo-nota label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.campo-nota input {
+  height: 52px;
+  padding: 0 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--text-1);
+  font-family: var(--font-b);
+  font-size: 1.25rem;
+  font-weight: 500;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.campo-nota input:hover { border-color: var(--border-hover); }
+.campo-nota input:focus { border-color: var(--accent); outline: none; }
+
+.campo-nota small {
+  font-size: 0.76rem;
+  color: var(--text-3);
+  line-height: 1.5;
+}
+
+/* ── GRIDS DE RESULTADO ── */
+.resultados-grid { display: grid; gap: 12px; margin-top: 20px; }
+.resultados-grid.dois { grid-template-columns: 1fr 1fr; }
+.resultados-grid.tres { grid-template-columns: repeat(3, 1fr); }
+
+/* ── CARD RESULTADO ── */
+.card-resultado {
+  padding: 20px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-resultado span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+}
+
+.card-resultado strong {
+  font-family: var(--font-d);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-1);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.card-resultado p {
+  font-size: 0.8rem;
+  color: var(--text-2);
+  line-height: 1.5;
+  margin-top: 2px;
+}
+
+.card-resultado.destaque {
+  border-color: rgba(200,255,0,0.25);
+  background: var(--accent-dim);
+}
+.card-resultado.destaque strong { color: var(--accent); }
+
+.card-resultado.aprovado {
+  border-color: rgba(0,200,100,0.2);
+  background: rgba(0,200,100,0.05);
+}
+.card-resultado.aprovado strong { color: #00c864; }
+
+.card-resultado.reprovado {
+  border-color: rgba(255,70,70,0.2);
+  background: rgba(255,70,70,0.05);
+}
+.card-resultado.reprovado strong { color: #ff4646; }
+
+/* ── TOGGLE ── */
+.toggle-linha {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.toggle-linha input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 36px;
+  height: 20px;
+  flex-shrink: 0;
+  background: var(--surface-3);
+  border: 1px solid var(--border-hover);
+  border-radius: 999px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s, border-color 0.2s;
+}
+.toggle-linha input[type="checkbox"]::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--text-3);
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s, background 0.2s;
+}
+.toggle-linha input[type="checkbox"]:checked {
+  background: var(--accent-dim);
+  border-color: rgba(200,255,0,0.3);
+}
+.toggle-linha input[type="checkbox"]:checked::after {
+  background: var(--accent);
+  transform: translateX(16px);
+}
+
+.toggle-linha span {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.4;
+}
+
+/* ── PAINEL AVANÇADO ── */
+.painel-avancado {
+  padding: 20px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aviso {
+  padding: 14px 16px;
+  background: rgba(200,255,0,0.04);
+  border: 1px solid rgba(200,255,0,0.1);
+  border-radius: var(--r-sm);
+}
+.aviso p { font-size: 0.82rem; color: var(--text-2); line-height: 1.65; }
+
+/* ── RESULTADO PROVA NECESSÁRIA ── */
+.resultado-prova-necessaria {
+  padding: 24px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--r-md);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resultado-prova-necessaria span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+}
+
+.resultado-prova-necessaria strong {
+  font-family: var(--font-d);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.resultado-prova-necessaria p {
+  font-size: 0.875rem;
+  color: var(--text-2);
+}
+
+/* ── STATUS CARD ── */
+.status-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 18px;
+  border-radius: var(--r-sm);
+  margin-top: 16px;
+}
+
+.status-card strong {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.status-card span {
+  font-size: 0.82rem;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.status-card.atencao {
+  background: rgba(255,165,0,0.06);
+  border: 1px solid rgba(255,165,0,0.2);
+}
+.status-card.atencao strong { color: #ffa500; }
+
+/* ── RESPONSIVO CALCULADORA ── */
+@media (max-width: 768px) {
+  .calculadora-hero { padding: 24px 16px 20px; }
+  .calculadora-page .card {
+    padding: 22px;
+    margin: 0 16px 16px;
+    max-width: calc(100% - 32px);
+  }
+  .grid-campos.dois { grid-template-columns: 1fr; }
+  .resultados-grid.tres { grid-template-columns: 1fr; }
+  .resultados-grid.dois { grid-template-columns: 1fr; }
+  .cabecalho-card > p { padding-left: 0; }
+  .resultado-prova-necessaria strong { font-size: 2.2rem; }
+}
+
 /* ─── 404 PAGE ───────────────────────────────────────────── */
 .notfound-page { width: 100%; min-height: 100vh; background: var(--bg); }
 
