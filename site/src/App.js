@@ -18,7 +18,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/calculadora_do_miron" element={<CalculadoraIESB />} />
+          <Route path="/calculadora" element={<CalculadoraIESB />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

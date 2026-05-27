@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaLinkedinIn, FaGithub, FaEnvelope, FaGlobe } from 'react-icons/fa';
+import { FaLinkedinIn, FaGithub, FaEnvelope, FaGlobe, FaDownload } from 'react-icons/fa';
+import cvBR from '../assets/pdf/Mayron Malaquias BR.pdf';
+import cvEN from '../assets/pdf/Mayron Malaquias EN.pdf';
 import '../assets/css/styles.css';
 
 function Contact() {
@@ -110,6 +112,37 @@ function Contact() {
                   <span className="contact-link-arrow">↗</span>
                 </a>
               ))}
+            </div>
+
+            {/* ── CV DOWNLOAD ── */}
+            <div className="cv-download">
+              <p className="cv-download-title">Resume</p>
+              <div className="cv-download-row">
+                <a
+                  href={cvBR}
+                  download="Mayron_Malaquias_BR.pdf"
+                  className="cv-card"
+                >
+                  <div className="cv-card-lang">PT</div>
+                  <div className="cv-card-info">
+                    <h3>Português</h3>
+                    <p>Versão brasileira</p>
+                  </div>
+                  <FaDownload className="cv-card-dl" />
+                </a>
+                <a
+                  href={cvEN}
+                  download="Mayron_Malaquias_EN.pdf"
+                  className="cv-card"
+                >
+                  <div className="cv-card-lang">EN</div>
+                  <div className="cv-card-info">
+                    <h3>English</h3>
+                    <p>European format</p>
+                  </div>
+                  <FaDownload className="cv-card-dl" />
+                </a>
+              </div>
             </div>
 
             <div className="contact-availability">
