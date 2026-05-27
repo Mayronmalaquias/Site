@@ -1,5 +1,7 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FaMoon, FaSun } from 'react-icons/fa';
+import logoIesb from '../assets/img/logoIesb.png';
 import '../assets/css/styles.css';
 
 const MEDIA_MINIMA = 5;
@@ -156,6 +158,17 @@ const CalculadoraNotas = () => {
   const [provaDiferente, setProvaDiferente] = useState(false);
   const [valorTotalProva, setValorTotalProva] = useState('');
 
+  const [darkMode, setDarkMode] = useState(
+    () => localStorage.getItem('iesb-calc-dark') === 'true'
+  );
+
+  function toggleDark() {
+    setDarkMode(prev => {
+      localStorage.setItem('iesb-calc-dark', String(!prev));
+      return !prev;
+    });
+  }
+
   const calculoPrincipal = useMemo(() => {
     const a1 = paraNumero(notaA1);
     const a2 = paraNumero(notaA2);
@@ -310,6 +323,20 @@ const CalculadoraNotas = () => {
     };
   }, [calculoPrincipal.a1, calculoPrincipal.a2]);
 
+  useEffect(() => {
+    const prevTitle = document.title;
+    document.title = 'Calculadora IESB — Notas, Médias e Menções | Centro Universitário';
+
+    const favicon = document.querySelector("link[rel~='icon']");
+    const prevHref = favicon ? favicon.href : '';
+    if (favicon) favicon.href = logoIesb;
+
+    return () => {
+      document.title = prevTitle;
+      if (favicon) favicon.href = prevHref;
+    };
+  }, []);
+
   function limparTudo() {
     setNotaA1('');
     setNotaA2('');
@@ -320,25 +347,36 @@ const CalculadoraNotas = () => {
   }
 
   return (
-    <main className="calculadora-page">
+    <main className={`calculadora-page${darkMode ? ' calculadora-dark' : ''}`}>
       <a href="#main-content" className="skip-link">Pular para o conteúdo</a>
-      <nav className="home-navbar">
-        <div className="logo">
-          <span className="logo-dot" />
-          miron<span className="logo-accent">dev</span>
-        </div>
-        <div className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/contact">Contact</Link>
-        </div>
-      </nav>
 
+      {/* ── IESB HEADER ── */}
+      <header className="iesb-header">
+        <div className="iesb-header-brand">
+          <img src={logoIesb} alt="IESB Centro Universitário" className="iesb-header-logo" />
+          <div className="iesb-header-title">
+            Calculadora IESB
+            <span>Centro Universitário de Brasília</span>
+          </div>
+        </div>
+        <div className="iesb-header-actions">
+          <button
+            className="iesb-theme-toggle"
+            onClick={toggleDark}
+            aria-label={darkMode ? 'Ativar modo claro' : 'Ativar modo escuro'}
+            title={darkMode ? 'Modo claro' : 'Modo escuro'}
+          >
+            {darkMode ? <FaSun /> : <FaMoon />}
+          </button>
+          <Link to="/" className="iesb-back-link">← Portfólio</Link>
+        </div>
+      </header>
+
+      {/* ── HERO ── */}
       <section id="main-content" className="calculadora-hero">
         <div>
-          <span className="tag">IESB</span>
-          <h1>Calculadora de Notas</h1>
+          <span className="tag">Calculadora de Notas IESB</span>
+          <h1>Calcule sua média final</h1>
           <p>
             Digite só números. Para colocar <strong>8.50</strong>, digite{' '}
             <strong>850</strong>. Para peso <strong>0.80</strong>, digite{' '}
@@ -347,7 +385,7 @@ const CalculadoraNotas = () => {
         </div>
 
         <button type="button" className="botao-limpar" onClick={limparTudo}>
-          Limpar
+          Limpar tudo
         </button>
       </section>
 
