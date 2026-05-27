@@ -5,22 +5,22 @@ import '../assets/css/styles.css';
 function About() {
   const timeline = [
     {
-      year: '2022',
+      year: '2023',
       title: 'Started Computer Engineering',
       desc: 'Enrolled at IESB, Brasília. First contact with programming, logic and hardware fundamentals.',
     },
     {
-      year: '2023',
+      year: '2024',
       title: 'Entered the Data World',
       desc: 'Joined a real estate company as a data analyst. First real datasets, first SQL queries, first dashboards.',
     },
     {
-      year: '2024',
+      year: '2025',
       title: 'Built Production Systems',
       desc: 'Developed the real estate pricing platform — from ETL pipeline to React front-end — used in production.',
     },
     {
-      year: '2025',
+      year: '2026',
       title: 'Cybersecurity Research',
       desc: 'Final project: AI-based Honeypot system. Combining security, data and machine learning.',
     },
