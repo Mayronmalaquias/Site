@@ -1,0 +1,5 @@
+# Serve o HTML com as OG tags do IESB para a rota da calculadora
+/calculadora    /calculadora.html    200
+
+# Fallback SPA para todas as outras rotas
+/*              /index.html          200
