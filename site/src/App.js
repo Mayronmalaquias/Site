@@ -7,6 +7,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import CalculadoraIESB from './pages/CalculadoraIESB';
+import Pelada from './pages/Pelada';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/calculadora" element={<CalculadoraIESB />} />
+          <Route path="/pelada" element={<Pelada />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
